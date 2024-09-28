@@ -1,0 +1,8 @@
+gradio
+pandas
+numpy
+Json
+Isodate
+google-api-python-client
+plotly
+python-dateutil

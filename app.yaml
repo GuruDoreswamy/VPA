@@ -1,0 +1,32 @@
+# app.yaml
+runtime: python39  # Specify the Python version you're using
+
+# Optional: Specify a custom entry point for your application
+entrypoint: gunicorn -b :$PORT app:app
+
+# Required packages for your Gradio app
+dependencies:
+  - gradio
+  - pandas
+  - requests
+  - numpy
+  - matplotlib  # If you're using matplotlib for plotting
+  - scikit-learn  # If you're using any ML libraries
+
+# Environment variables (optional)
+env_variables:
+  GOOGLE_CLOUD_PROJECT: your_project_id  # Replace with your Google Cloud project ID
+  API_KEY: your_api_key  # Replace with your API key if needed
+
+# Service configuration
+automatic_scaling:
+  min_instances: 1
+  max_instances: 5  # Adjust based on your expected traffic
+
+# Optional: Define a custom health check
+health_check:
+  enable_health_check: true
+  check_interval: 5s
+  timeout: 4s
+  unhealthy_threshold: 2
+  healthy_threshold: 2
